@@ -7,6 +7,8 @@
 <script src="js/map-data.js"></script>
 <script src="js/sim-journey.js"></script>
 <script src="js/sim-ladder.js"></script>
+<script src="js/sim-ec2.js"></script>
+<script src="js/sim-k8s.js"></script>
 <script>
   const out = document.getElementById('out');
   let fails = 0;
@@ -42,6 +44,20 @@
   } else {
     check('JourneyModel loaded', false);
   }
+
+  // sim-ec2 순수 로직
+  if (window.ec2State) {
+    check('ec2: 7 steps total', ec2State(0).total === 7);
+    check('ec2: step 0 has only OS done', ec2State(0).checklist.filter(c=>c.done).length === 1);
+    check('ec2: final step all 6 done', ec2State(6).checklist.every(c=>c.done));
+  } else { check('ec2State loaded', false); }
+
+  // sim-k8s 순수 로직
+  if (window.k8sReconcile) {
+    check('k8s: heals to desired 3', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'}], 3).length === 3);
+    check('k8s: drops dying then refills to 3', k8sReconcile([{id:1,state:'dying'},{id:2,state:'live'},{id:3,state:'live'}], 3).length === 3);
+    check('k8s: stable at desired', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'},{id:3,state:'live'}], 3).length === 3);
+  } else { check('k8sReconcile loaded', false); }
 
   window.__report = () => {
     const h = document.createElement('h2');

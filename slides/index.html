@@ -87,6 +87,12 @@
       <aside class="note" hidden>여기서 일부러 고통을 느낀다. 다음 단계와 대조하기 위해.</aside>
     </section>
     <section class="slide" data-part="2">
+      <div class="label">PART 2 · 🧪 시뮬레이터</div>
+      <h2>EC2에 직접 올려보기</h2>
+      <div id="sim-ec2-mount"></div>
+      <aside class="note" hidden>일곱 단계를 한 번씩 클릭하며 "손으로 다 한다"를 체감시킨다.</aside>
+    </section>
+    <section class="slide" data-part="2">
       <div class="label">PART 2 · 2-2</div>
       <h2>Railway — git push면 끝</h2>
       <p>GitHub 연결 → 끝. 방금 22분 걸린 걸 <code>git push</code> 한 번이 대신합니다.</p>
@@ -95,6 +101,12 @@
       <div class="label">PART 2 · 2-3</div>
       <h2>EKS — 왜/언제</h2>
       <p>컨테이너가 50개면? → 오케스트레이션. Pod·Service·Deployment. <span class="muted">입문 팀엔 보통 과잉.</span></p>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 🧪 시뮬레이터</div>
+      <h2>쿠버네티스 self-heal</h2>
+      <div id="sim-k8s-mount"></div>
+      <aside class="note" hidden>Pod를 죽이면 자동 복구되는 걸 보여준다 — 오케스트레이션의 핵심.</aside>
     </section>
     <section class="slide" data-part="2">
       <div class="label">PART 2 · 2-4</div>
@@ -199,6 +211,8 @@
 <script src="js/sim-journey.js"></script>
 <script src="js/sim-ladder.js"></script>
 <script src="js/diagrams.js"></script>
+<script src="js/sim-ec2.js"></script>
+<script src="js/sim-k8s.js"></script>
 <script src="js/deck.js"></script>
 <script>
   const mi = document.getElementById('map-intro');
@@ -211,6 +225,8 @@
   const dgg=document.getElementById('diagram-gitops'); if(dgg) renderGitopsLoop(dgg);
   const dgf=document.getElementById('diagram-flutter'); if(dgf) renderFlutterPipeline(dgf);
   const dge=document.getElementById('diagram-env'); if(dge) renderEnvSplit(dge);
+  const e2=document.getElementById('sim-ec2-mount'); if(e2) renderEc2Build(e2);
+  const k8=document.getElementById('sim-k8s-mount'); if(k8) renderK8sArch(k8);
 </script>
 </body>
 </html>

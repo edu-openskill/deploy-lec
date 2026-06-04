@@ -108,3 +108,39 @@ html,body{margin:0;height:100%;background:#27272a;
 .dbox-dev{border-color:#fdba74;background:#fff7ed}
 .dbox-prod{border-color:#22c55e;background:#f0fdf4}
 .denv-note{margin-top:6px;text-align:center;color:var(--muted);font-size:15px}
+
+/* EC2 수동 배포 시뮬레이터 */
+.ec2-sim{margin-top:6px}
+.ec2-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:stretch}
+.ec2-term{background:#0d1117;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:210px}
+.ec2-term-bar{background:#21262d;color:#8b949e;font-size:12px;padding:7px 12px;font-family:ui-monospace,monospace}
+.ec2-term-body{margin:0;padding:12px 16px;color:#7ee787;font-family:ui-monospace,monospace;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-break:break-all;overflow:auto;max-height:240px;flex:1}
+.ec2-state{min-height:210px}
+.ec2-rows{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+.ec2-row{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;padding:7px 12px;border-radius:8px;background:#fef2f2;color:#991b1b;transition:all .25s}
+.ec2-row.done{background:#dcfce7;color:#166534}
+.ec2-mark{font-size:15px}
+.ec2-caption{min-height:62px}
+.ec2-analogy{color:#fcd34d;font-size:15px}
+.ec2-done-note{color:#86efac}
+.ec2-ctrl{display:flex;align-items:center;gap:10px;margin-top:12px}
+.ec2-ctrl .ladder-tab{flex:0 0 auto}
+.ec2-ctrl .sim-go:disabled{opacity:.45;cursor:default}
+.ec2-progress{margin-left:auto;font-size:16px;font-weight:700;color:var(--muted)}
+
+/* 쿠버네티스 self-heal 시뮬레이터 */
+.k8s-arch{margin-top:6px}
+.k8s-cp{text-align:center;font-size:17px;font-weight:800;color:#fff;background:var(--accent);border-radius:10px;padding:10px;margin-bottom:12px}
+.k8s-cp-s{font-size:13px;font-weight:400;opacity:.9}
+.k8s-cluster{display:flex;gap:14px;border:2px dashed #a5b4fc;border-radius:12px;padding:14px;background:#f5f3ff}
+.k8s-node{flex:1;background:#fff;border:2px solid var(--line);border-radius:10px;padding:12px;min-height:96px}
+.k8s-node-h{font-size:15px;font-weight:700;margin-bottom:10px}
+.k8s-node-h span{color:var(--muted);font-weight:400;font-size:13px}
+.k8s-pods{display:flex;flex-wrap:wrap;gap:8px}
+.k8s-pod{padding:8px 12px;border-radius:8px;font-size:15px;font-weight:700;background:#dcfce7;border:2px solid #22c55e;transition:all .3s}
+.k8s-pod.dying{background:#fee2e2;border-color:var(--danger);opacity:.5;text-decoration:line-through}
+.k8s-pod.new{animation:k8sPop .5s ease;background:#dbeafe;border-color:#60a5fa}
+@keyframes k8sPop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.k8s-notes{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.k8s-note{font-size:13px;color:var(--muted);background:#f4f4f5;border-radius:8px;padding:6px 10px}
+.k8s-caption{margin-top:12px}

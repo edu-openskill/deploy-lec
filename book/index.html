@@ -316,6 +316,13 @@
     2단계에서 소개한 Railway를 기억하시나요? GitHub에 push하면 자동으로 배포가 됩니다. 사실 이것이 아기 GitOps였습니다. Git이 원하는 상태(코드)를 정의하고, 플랫폼이 클러스터(서버)를 그 상태에 맞추는 것 — GitOps의 본질입니다. Railway는 그것을 단순하게 구현한 것이고, ArgoCD는 그것을 Kubernetes 위에서 완전히 구현한 것입니다.
   </div>
 
+  <p>먼저 1단계(EC2에 손으로)가 실제로 어떤 일인지 아래 시뮬레이터로 따라가보세요. <strong>다음 단계 ▶</strong>를 누를 때마다 빈 우분투 한 대가 외부에서 접속 가능한 상시 서버가 되기까지의 일곱 단계가 하나씩 진행됩니다. 일곱 번 모두 사람이 직접 한다는 점에 주목하세요.</p>
+
+  <div class="figure">
+    <div id="book-ec2"></div>
+    <div class="cap">EC2 수동 배포 — ▶ 로 일곱 단계를 직접 실행해보세요</div>
+  </div>
+
   <p>아래 자동화 사다리 시뮬레이터에서 각 단계를 클릭해보세요. 단계가 올라갈수록 작업 칩이 "내가 할 일" 쪽에서 "플랫폼이 할 일" 쪽으로 이동합니다. 처음에는 모든 것이 내 손에 있다가, 마지막에는 git push 하나만 남습니다.</p>
 
   <div class="figure">
@@ -324,6 +331,13 @@
   </div>
 
   <p>이 시뮬레이터에서 핵심은 "플랫폼이 더 많이 해줄수록, 내가 더 많이 알아야 한다"는 역설입니다. Railway를 쓸 때는 안에서 무슨 일이 일어나는지 몰라도 됩니다. 하지만 뭔가 잘못됐을 때 디버깅이 어렵습니다. EC2를 직접 관리할 때는 모든 것을 내가 설정하는 만큼, 모든 것을 이해하고 있습니다. 어느 단계가 "더 낫다"는 없습니다. 팀의 규모, 트래픽, 요구사항에 맞는 단계를 선택하는 것이 중요합니다.</p>
+
+  <p>쿠버네티스(EKS)가 왜 "오케스트레이션"인지 아래 시뮬레이터로 체감해보세요. 컨트롤 플레인은 "Pod를 3개 유지"라는 원하는 상태를 알고 있습니다. <strong>Pod 하나 죽이기 💥</strong>를 누르면 Pod가 죽지만, 잠시 뒤 컨트롤 플레인이 미달을 감지하고 새 Pod를 자동으로 띄웁니다(self-healing). 사람이 새벽에 일어나 서버를 재시작할 필요가 없습니다 — 이것이 수동 운영(2부 1단계)과의 결정적 차이입니다.</p>
+
+  <div class="figure">
+    <div id="book-k8s"></div>
+    <div class="cap">쿠버네티스 self-heal — Pod를 💥 로 죽여보세요. 알아서 되살아납니다.</div>
+  </div>
 
   <h3>GitOps reconcile 루프 — 끝없는 동기화</h3>
 
@@ -602,6 +616,8 @@
 <script src="../slides/js/sim-journey.js"></script>
 <script src="../slides/js/sim-ladder.js"></script>
 <script src="../slides/js/diagrams.js"></script>
+<script src="../slides/js/sim-ec2.js"></script>
+<script src="../slides/js/sim-k8s.js"></script>
 <script>
   renderMap(document.getElementById('book-map'), 'app');
   mountJourney(document.getElementById('book-journey'));
@@ -609,6 +625,8 @@
   renderGitopsLoop(document.getElementById('book-gitops'));
   renderFlutterPipeline(document.getElementById('book-flutter'));
   renderEnvSplit(document.getElementById('book-env'));
+  renderEc2Build(document.getElementById('book-ec2'));
+  renderK8sArch(document.getElementById('book-k8s'));
 </script>
 
 </body>
