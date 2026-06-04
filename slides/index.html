@@ -59,6 +59,68 @@
       </ul>
     </section>
 
+    <!-- 2부 (7 slides) -->
+    <section class="slide" data-part="2">
+      <div class="label">PART 2</div>
+      <h2>같은 JAR, 4가지 방식</h2>
+      <p>똑같은 <code>app.jar</code> 하나를 4단계로 올려봅니다. 위로 갈수록 내 손은 적게.</p>
+      <div class="accent-bar"></div>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 2-0</div>
+      <h2>JAR이란</h2>
+      <p><code>./gradlew build</code> → <code>build/libs/app.jar</code> → <code>java -jar app.jar</code></p>
+      <p class="muted">이 파일 하나가 너의 서버 전부. Tomcat이 안에 들어있습니다.</p>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 2-1 (메인)</div>
+      <h2>AWS EC2에 손으로</h2>
+      <p>EC2(빈 우분투) → SSH → JDK 설치 → scp 전송 → 실행 → <b>보안그룹 포트 열기</b> → systemd</p>
+      <aside class="note" hidden>여기서 일부러 고통을 느낀다. 다음 단계와 대조하기 위해.</aside>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 2-2</div>
+      <h2>Railway — git push면 끝</h2>
+      <p>GitHub 연결 → 끝. 방금 22분 걸린 걸 <code>git push</code> 한 번이 대신합니다.</p>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 2-3</div>
+      <h2>EKS — 왜/언제</h2>
+      <p>컨테이너가 50개면? → 오케스트레이션. Pod·Service·Deployment. <span class="muted">입문 팀엔 보통 과잉.</span></p>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 2-4</div>
+      <h2>GitOps &amp; ArgoCD — 종착</h2>
+      <p>Git에 원하는 상태를 적으면 ArgoCD가 클러스터를 거기 맞춰 동기화.</p>
+      <p class="muted">Railway 기억나죠? 그게 아기 GitOps였어요.</p>
+    </section>
+    <section class="slide" data-part="2">
+      <div class="label">PART 2 · 🧪 시뮬레이터</div>
+      <h2>자동화 사다리</h2>
+      <div id="sim-ladder-mount"></div>
+      <aside class="note" hidden>단계를 클릭해 작업칩이 나→플랫폼으로 옮겨가는 걸 보여준다.</aside>
+    </section>
+
+    <!-- 3부 (3 slides) -->
+    <section class="slide" data-part="3">
+      <div class="label">PART 3</div>
+      <h2>IP를 사람 주소로 — DNS</h2>
+      <p>13.124.x.x → <code>api.myapp.com</code>. Route53/가비아에서 A레코드 등록.</p>
+      <div id="map-dns"></div>
+    </section>
+    <section class="slide" data-part="3">
+      <div class="label">PART 3</div>
+      <h2>리버스 프록시는 왜?</h2>
+      <p>브라우저는 80/443으로 옴 → Nginx가 받아 내부 8080으로 전달.</p>
+      <div id="map-nginx"></div>
+    </section>
+    <section class="slide" data-part="3">
+      <div class="label">PART 3</div>
+      <h2>HTTPS — 자물쇠 붙이기</h2>
+      <p>TLS 인증서. Let's Encrypt(무료·자동갱신) vs AWS ACM.</p>
+      <p class="muted">https는 선택이 아니라 기본. 앱 스토어도 평문 http를 막습니다.</p>
+    </section>
+
   </div>
 </div>
 
@@ -74,6 +136,8 @@
 <script>
   const mi = document.getElementById('map-intro');
   if (mi) renderMap(mi, 'app'); // 1부 도입: 출발점 강조
+  const dns = document.getElementById('map-dns');   if (dns) renderMap(dns, 'dns');
+  const ngx = document.getElementById('map-nginx'); if (ngx) renderMap(ngx, 'nginx');
 </script>
 </body>
 </html>
