@@ -26,13 +26,16 @@
       <div class="ladder-tabs">${STAGES.map((s,i) =>
         `<button class="ladder-tab${i===0?' on':''}" data-stage="${s}">${STAGE_LABEL[s]}</button>`).join('')}</div>
       <div class="ladder-col"><div class="ladder-head">🙋 내가 하는 일</div><div class="ladder-me chips"></div></div>
-      <div class="ladder-col"><div class="ladder-head">🤖 플랫폼이 하는 일</div><div class="ladder-pf chips"></div></div>`;
+      <div class="ladder-col"><div class="ladder-head">🤖 플랫폼이 하는 일</div><div class="ladder-pf chips"></div></div>
+      <div class="ladder-callback"></div>`;
     const meBox = container.querySelector('.ladder-me');
     const pfBox = container.querySelector('.ladder-pf');
     function paint(stage) {
       const { me, platform } = ladderState(stage);
       meBox.innerHTML = me.map(t => `<span class="chip me">${t}</span>`).join('') || '<span class="empty">(없음)</span>';
-      pfBox.innerHTML = platform.map(t => `<span class="chip pf">${t}</span>`).join('') || '<span class="empty">AWS에선 거의 없음</span>';
+      pfBox.innerHTML = platform.map(t => `<span class="chip pf">${t}</span>`).join('') || '<span class="empty">(없음 — 모든 작업을 내가 합니다)</span>';
+      const cb = container.querySelector('.ladder-callback');
+      if (cb) cb.innerHTML = stage === 'gitops' ? '💡 Railway 기억나죠? 그게 아기 GitOps였어요.' : '';
     }
     container.querySelectorAll('.ladder-tab').forEach(btn => {
       btn.addEventListener('click', () => {

@@ -34,28 +34,44 @@
     let timer = null;
     function play() {
       if (timer) { clearInterval(timer); timer = null; }
-      chain.querySelectorAll('.mapnode').forEach(el => el.classList.remove('cur', 'blocked'));
+      chain.querySelectorAll('.mapnode').forEach(el => el.classList.remove('cur','blocked','ret'));
       const sgOpen = container.querySelector('.sim-sg').checked;
       const { reached, blocked } = JourneyModel.path(sgOpen);
       let k = 0;
       timer = setInterval(() => {
-        if (k > 0) chain.querySelector(`.mapnode[data-id="${reached[k-1]}"]`)?.classList.remove('cur');
         if (k >= reached.length) {
           clearInterval(timer); timer = null;
+          if (k > 0) chain.querySelector(`.mapnode[data-id="${reached[k-1]}"]`)?.classList.remove('cur');
           const last = reached[reached.length - 1];
           if (blocked) {
             chain.querySelector(`.mapnode[data-id="${last}"]`)?.classList.add('blocked');
             caption.innerHTML = '🛑 <b>보안그룹</b>에서 차단! 443 포트가 닫혀 패킷이 서버에 닿지 못합니다.';
           } else {
-            caption.innerHTML = '✅ 응답이 같은 길을 거꾸로 돌아 앱에 도착합니다.';
+            playReturn(reached);
           }
           return;
         }
+        if (k > 0) chain.querySelector(`.mapnode[data-id="${reached[k-1]}"]`)?.classList.remove('cur');
         const node = nodes.find(n => n.id === reached[k]);
         chain.querySelector(`.mapnode[data-id="${reached[k]}"]`)?.classList.add('cur');
         caption.innerHTML = `💬 <b>${node.label}</b>: ${node.caption}`;
         k++;
       }, 900);
+    }
+    function playReturn(reached) {
+      const rev = reached.slice().reverse();
+      let k = 0;
+      caption.innerHTML = '↩️ 응답이 같은 길을 거꾸로 돌아갑니다…';
+      timer = setInterval(() => {
+        if (k > 0) chain.querySelector(`.mapnode[data-id="${rev[k-1]}"]`)?.classList.remove('ret');
+        if (k >= rev.length) {
+          clearInterval(timer); timer = null;
+          caption.innerHTML = '✅ 응답이 앱에 도착했습니다. 이것이 요청 한 번의 여정입니다.';
+          return;
+        }
+        chain.querySelector(`.mapnode[data-id="${rev[k]}"]`)?.classList.add('ret');
+        k++;
+      }, 500);
     }
     container.querySelector('.sim-go').addEventListener('click', play);
   }
