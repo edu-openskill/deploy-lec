@@ -56,3 +56,16 @@ html,body{margin:0;height:100%;background:#27272a;
 .maplabel{font-size:14px;font-weight:700;margin-top:4px}
 .mapnode.cur .maplabel{color:var(--accent)}
 .maparrow{color:#a1a1aa;font-weight:700}
+
+/* 시뮬레이터 공통/여정 */
+.sim-controls{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sim-input{font-family:ui-monospace,monospace;font-size:18px;padding:8px 12px;
+  border:1px solid var(--line);border-radius:8px;max-width:240px}
+.sim-go{font-size:18px;font-weight:700;color:#fff;background:var(--accent);
+  border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.sim-toggle{margin-left:auto;font-size:16px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.sim-chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mapnode.blocked{background:#fee2e2;border-color:var(--danger);
+  box-shadow:0 0 0 3px rgba(239,68,68,.25)}
+.sim-caption{margin-top:18px;background:#18181b;color:#e4e4e7;border-radius:8px;
+  padding:14px 18px;font-size:18px;min-height:28px}

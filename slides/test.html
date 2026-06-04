@@ -5,7 +5,7 @@
 <h1>시뮬레이터 순수 로직 테스트</h1>
 <ul id="out"></ul>
 <script src="js/map-data.js"></script>
-<!-- sim 스크립트는 이후 Task에서 추가된다 -->
+<script src="js/sim-journey.js"></script>
 <script>
   const out = document.getElementById('out');
   let fails = 0;
@@ -20,6 +20,17 @@
   check('MAP_NODES has 7 nodes', window.MAP_NODES.length === 7);
   check('first node is app', window.MAP_NODES[0].id === 'app');
   check('sg node exists', window.MAP_NODES.some(n => n.id === 'sg'));
+
+  // sim-journey 순수 로직
+  if (window.JourneyModel) {
+    const open = JourneyModel.path(true);
+    check('open path reaches all 7 nodes', open.reached.length === 7 && open.blocked === false);
+    const blocked = JourneyModel.path(false);
+    check('closed SG blocks at sg', blocked.blocked === true && blocked.reached[blocked.reached.length-1] === 'sg');
+    check('closed path stops before jar', !blocked.reached.includes('jar'));
+  } else {
+    check('JourneyModel loaded', false);
+  }
 
   window.__report = () => {
     const h = document.createElement('h2');

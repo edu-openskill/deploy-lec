@@ -59,6 +59,13 @@
       </ul>
     </section>
 
+    <section class="slide" data-part="1">
+      <div class="label">PART 1 · 🧪 시뮬레이터</div>
+      <h2>요청의 여정</h2>
+      <div id="sim-journey-mount"></div>
+      <aside class="note" hidden>도메인 입력→흐름 재생. 보안그룹 토글 해제 후 다시 보내 차단을 시연.</aside>
+    </section>
+
     <!-- 2부 (7 slides) -->
     <section class="slide" data-part="2">
       <div class="label">PART 2</div>
@@ -183,6 +190,7 @@
 
 <script src="js/map-data.js"></script>
 <script src="js/master-map.js"></script>
+<script src="js/sim-journey.js"></script>
 <script src="js/deck.js"></script>
 <script>
   const mi = document.getElementById('map-intro');
@@ -190,6 +198,7 @@
   const dns = document.getElementById('map-dns');   if (dns) renderMap(dns, 'dns');
   const ngx = document.getElementById('map-nginx'); if (ngx) renderMap(ngx, 'nginx');
   const fin = document.getElementById('map-final'); if (fin) renderMap(fin, null);
+  const sj = document.getElementById('sim-journey-mount'); if (sj) mountJourney(sj);
 </script>
 </body>
 </html>
