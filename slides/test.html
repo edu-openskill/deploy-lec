@@ -50,6 +50,10 @@
     check('ec2: 7 steps total', ec2State(0).total === 7);
     check('ec2: step 0 has only OS done', ec2State(0).checklist.filter(c=>c.done).length === 1);
     check('ec2: final step all 6 done', ec2State(6).checklist.every(c=>c.done));
+    check('ec2: 시작 전 외부접속 down', ec2State(-1).external === 'down');
+    check('ec2: 실행만 됐을 때 방화벽이 막음(blocked)', ec2State(4).external === 'blocked');
+    check('ec2: 포트까지 열면 ok', ec2State(5).external === 'ok');
+    check('ec2: 누적 시간 22분', ec2State(6).minutes === 22);
   } else { check('ec2State loaded', false); }
 
   // sim-k8s 순수 로직
@@ -57,6 +61,8 @@
     check('k8s: heals to desired 3', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'}], 3).length === 3);
     check('k8s: drops dying then refills to 3', k8sReconcile([{id:1,state:'dying'},{id:2,state:'live'},{id:3,state:'live'}], 3).length === 3);
     check('k8s: stable at desired', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'},{id:3,state:'live'}], 3).length === 3);
+    check('k8s: scale up to 5', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'},{id:3,state:'live'}], 5).length === 5);
+    check('k8s: scale down to 2', k8sReconcile([{id:1,state:'live'},{id:2,state:'live'},{id:3,state:'live'}], 2).length === 2);
   } else { check('k8sReconcile loaded', false); }
 
   window.__report = () => {

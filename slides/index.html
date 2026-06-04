@@ -81,39 +81,50 @@
       <p class="muted">이 파일 하나가 너의 서버 전부. Tomcat이 안에 들어있습니다.</p>
     </section>
     <section class="slide" data-part="2">
-      <div class="label">PART 2 · 2-1 (메인)</div>
+      <div class="label">PART 2 · 2-1 (메인) · IaaS</div>
       <h2>AWS EC2에 손으로</h2>
-      <p>EC2(빈 우분투) → SSH → JDK 설치 → scp 전송 → 실행 → <b>보안그룹 포트 열기</b> → systemd</p>
-      <aside class="note" hidden>여기서 일부러 고통을 느낀다. 다음 단계와 대조하기 위해.</aside>
+      <p>EC2 = 클라우드에서 빌리는 <b>빈 컴퓨터(IaaS)</b> 한 대. 우분투만 깔린 백지 상태.</p>
+      <ul style="font-size:21px;margin:8px 0">
+        <li><b>받는 것</b>: 공인 IP + 빈 우분투 + 접속 키(.pem)</li>
+        <li><b>없는 것</b>: Java · 내 앱 · 열린 포트 · 자동 재시작 — 전부 내가</li>
+      </ul>
+      <p class="muted">🏠 비유 — IaaS(EC2)=빈 원룸 임대 · PaaS(Railway)=풀옵션 오피스텔 · SaaS=호텔. 다음 슬라이드에서 직접 7단계를.</p>
+      <aside class="note" hidden>여기서 일부러 고통을 느낀다. 빈 방을 받았으니 가구·가전(java·앱·방화벽·systemd)을 다 채워야 한다.</aside>
     </section>
     <section class="slide" data-part="2">
       <div class="label">PART 2 · 🧪 시뮬레이터</div>
-      <h2>EC2에 직접 올려보기</h2>
+      <h2>EC2에 직접 올려보기 — 7단계</h2>
       <div id="sim-ec2-mount"></div>
-      <aside class="note" hidden>일곱 단계를 한 번씩 클릭하며 "손으로 다 한다"를 체감시킨다.</aside>
+      <aside class="note" hidden>'다음 단계'를 한 번씩 누르며 명령·출력을 따라간다. 오른쪽 서버상태 ❌→✅, 외부 브라우저는 실행+포트 둘 다 돼야 200 OK. 누적 22분을 체감.</aside>
     </section>
     <section class="slide" data-part="2">
-      <div class="label">PART 2 · 2-2</div>
+      <div class="label">PART 2 · 2-2 · PaaS</div>
       <h2>Railway — git push면 끝</h2>
-      <p>GitHub 연결 → 끝. 방금 22분 걸린 걸 <code>git push</code> 한 번이 대신합니다.</p>
+      <p>GitHub 저장소 연결 → 그 다음부턴 <code>git push</code> 한 번. 방금 손으로 한 7단계를 플랫폼이 대신.</p>
+      <div id="diagram-railway"></div>
+      <p class="muted">PaaS=풀옵션 오피스텔. 빌드·컨테이너화·실행·도메인·HTTPS까지 자동. <b>취미·MVP엔 이게 정답.</b></p>
+      <aside class="note" hidden>방금 22분 걸린 7단계를 git push 한 번이 대신한다. 무엇을 대신해줬나? → 자동화 사다리로 이어짐.</aside>
     </section>
     <section class="slide" data-part="2">
-      <div class="label">PART 2 · 2-3</div>
+      <div class="label">PART 2 · 2-3 · 컨테이너 &amp; 오케스트레이션</div>
       <h2>EKS — 왜/언제</h2>
-      <p>컨테이너가 50개면? → 오케스트레이션. Pod·Service·Deployment. <span class="muted">입문 팀엔 보통 과잉.</span></p>
+      <p>먼저 <b>컨테이너(Docker)</b> — 앱+java+OS설정을 한 박스에 담아 어디서나 똑같이 실행.</p>
+      <p>컨테이너 1개는 손으로. 그런데 <b>50개·100개</b>면? 죽으면 살리고, 몰리면 늘리는 일을 <b>오케스트레이션(쿠버네티스)</b>이 자동으로.</p>
+      <p class="muted">Pod(실행 단위) · Deployment(원하는 개수 유지) · Service(고정 주소+LB). EKS=AWS 관리형 k8s. <span class="muted">⚓ 입문 팀엔 보통 과잉.</span></p>
+      <aside class="note" hidden>다음 슬라이드 시뮬레이터로 self-heal·스케일·롤링업데이트·Node 다운을 직접 보여준다.</aside>
     </section>
     <section class="slide" data-part="2">
       <div class="label">PART 2 · 🧪 시뮬레이터</div>
-      <h2>쿠버네티스 self-heal</h2>
+      <h2>쿠버네티스 — 스스로 굴러가는 클러스터</h2>
       <div id="sim-k8s-mount"></div>
-      <aside class="note" hidden>Pod를 죽이면 자동 복구되는 걸 보여준다 — 오케스트레이션의 핵심.</aside>
+      <aside class="note" hidden>요청 분배(LB)·Pod 죽이기(self-heal)·스케일·무중단 롤링 업데이트·Node 다운 재배치를 버튼으로 시연. "선언하면 알아서 유지"가 핵심.</aside>
     </section>
     <section class="slide" data-part="2">
-      <div class="label">PART 2 · 2-4</div>
+      <div class="label">PART 2 · 2-4 · GitOps</div>
       <h2>GitOps &amp; ArgoCD — 종착</h2>
-      <p>Git에 원하는 상태를 적으면 ArgoCD가 클러스터를 거기 맞춰 동기화.</p>
+      <p>Git에 <b>원하는 상태</b>를 적으면 ArgoCD가 클러스터를 거기 맞춰 끊임없이 동기화(reconcile).</p>
       <div id="diagram-gitops"></div>
-      <p class="muted">Railway 기억나죠? 그게 아기 GitOps였어요.</p>
+      <p class="muted">예) 누가 kubectl로 손대도 Git과 다르면 ArgoCD가 되돌림. 롤백 = <code>git revert</code>. 배포 이력 = git 이력. Railway가 아기 GitOps였죠.</p>
     </section>
     <section class="slide" data-part="2">
       <div class="label">PART 2 · 🧪 시뮬레이터</div>
@@ -225,6 +236,7 @@
   const dgg=document.getElementById('diagram-gitops'); if(dgg) renderGitopsLoop(dgg);
   const dgf=document.getElementById('diagram-flutter'); if(dgf) renderFlutterPipeline(dgf);
   const dge=document.getElementById('diagram-env'); if(dge) renderEnvSplit(dge);
+  const drw=document.getElementById('diagram-railway'); if(drw) renderRailwayFlow(drw);
   const e2=document.getElementById('sim-ec2-mount'); if(e2) renderEc2Build(e2);
   const k8=document.getElementById('sim-k8s-mount'); if(k8) renderK8sArch(k8);
 </script>

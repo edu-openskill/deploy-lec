@@ -144,3 +144,32 @@ html,body{margin:0;height:100%;background:#27272a;
 .k8s-notes{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .k8s-note{font-size:13px;color:var(--muted);background:#f4f4f5;border-radius:8px;padding:6px 10px}
 .k8s-caption{margin-top:12px}
+
+/* EC2 시뮬레이터 추가 — 시계 / 외부접속 테스트 */
+.ec2-term-bar{display:flex;justify-content:space-between;align-items:center}
+.ec2-clock{color:#f0883e;font-weight:700}
+.ec2-side{display:flex;flex-direction:column;gap:10px}
+.ec2-state{min-height:0}
+.ec2-min{color:var(--muted);font-size:14px;font-weight:700}
+.ec2-ext{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;font-weight:700}
+.ec2-ext-h{color:var(--muted)}
+.ec2-ext-v{font-size:14px}
+.ec2-ext.ok{border-color:#22c55e;background:#f0fdf4}
+.ec2-ext.bad{border-color:var(--danger);background:#fef2f2}
+
+/* K8s 시뮬레이터 추가 — Service/상태/컨트롤/버전 */
+.k8s-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.k8s-svc{flex:1;text-align:center;font-size:15px;font-weight:800;color:#fff;
+  background:#0ea5e9;border-radius:10px;padding:8px}
+.k8s-svc span{font-size:12px;font-weight:400;opacity:.9}
+.k8s-status{font-size:14px;font-weight:700;color:var(--muted);white-space:nowrap}
+.k8s-status .ok{color:#16a34a}
+.k8s-status .bad{color:var(--danger)}
+.k8s-node.down{opacity:.4;filter:grayscale(1);border-style:dashed}
+.k8s-pod.live{background:#dcfce7;border-color:#22c55e}
+.k8s-pod.v2{background:#ede9fe;border-color:#8b5cf6}
+.k8s-pod.hit{box-shadow:0 0 0 4px rgba(14,165,233,.45);transform:translateY(-3px)}
+.k8s-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.k8s-btn{font-size:14px;padding:8px 12px}
+.k8s-ctrl .sim-go:disabled{opacity:.45;cursor:default}
