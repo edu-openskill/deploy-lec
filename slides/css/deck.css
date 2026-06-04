@@ -83,3 +83,9 @@ html,body{margin:0;height:100%;background:#27272a;
 .chip.me{background:#fee2e2}
 .chip.pf{background:#dcfce7}
 .empty{color:#a1a1aa;font-size:15px}
+
+/* 키보드 도움말 (첫 진입 힌트) */
+#help{position:fixed;left:16px;bottom:12px;font-size:12px;color:#a1a1aa;z-index:10}
+/* 코드 인라인 */
+.slide code{font-family:ui-monospace,monospace;background:#eef2ff;
+  color:#3730a3;padding:1px 7px;border-radius:5px;font-size:.92em}
