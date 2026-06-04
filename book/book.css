@@ -1,0 +1,44 @@
+/* 책: deck.css 위젯 스타일을 재사용하되 전역(어두운 배경/슬라이드 고정)을 읽기용으로 덮어쓴다.
+   deck.css 다음에 로드되어야 한다. */
+html,body{height:auto;background:#fff;overflow-x:hidden}
+body.book{max-width:760px;margin:0 auto;padding:0 24px 160px;color:var(--ink);
+  font-size:18px;line-height:1.78;font-family:Pretendard,system-ui,sans-serif}
+
+/* 상단 고정 목차 */
+.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin:0 -24px 8px;padding:12px 24px;
+  display:flex;gap:4px;flex-wrap:wrap;font-size:14px;font-weight:700}
+.toc a{color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:7px}
+.toc a:hover{background:var(--accent-soft);color:var(--accent)}
+
+/* 표지 */
+.cover{padding:56px 0 40px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.cover .eyebrow{color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.cover h1{font-size:48px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:14px 0 12px}
+.cover p{color:var(--muted);font-size:19px;margin:0;line-height:1.6}
+
+/* 본문 타이포 */
+.book h2{font-size:32px;font-weight:800;letter-spacing:-.01em;margin:72px 0 10px;scroll-margin-top:64px}
+.book h2 .part-no{color:var(--accent);font-size:15px;font-weight:800;display:block;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.book h3{font-size:23px;font-weight:700;margin:40px 0 8px}
+.book p{margin:14px 0}
+.book code{font-family:ui-monospace,monospace;background:#eef2ff;color:#3730a3;padding:1px 7px;border-radius:5px;font-size:.9em}
+.book ul,.book ol{padding-left:22px}.book li{margin:6px 0}
+.book strong{font-weight:700}
+
+/* 콜아웃 */
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);
+  padding:14px 18px;border-radius:0 10px 10px 0;margin:24px 0}
+.callout.tip{border-color:#22c55e;background:#f0fdf4}
+.callout.warn{border-color:var(--warn);background:#fff7ed}
+.callout .k{font-weight:800;color:var(--accent);font-size:14px;display:block;margin-bottom:4px}
+.callout.tip .k{color:#16a34a}.callout.warn .k{color:#c2680c}
+
+/* 그림(위젯)은 본문보다 넓게 — 가운데 정렬 풀블리드 */
+.figure{position:relative;left:50%;transform:translateX(-50%);width:min(94vw,1000px);
+  background:#fafafa;border:1px solid var(--line);border-radius:16px;padding:24px;margin:34px 0}
+.figure .cap{font-size:14px;color:var(--muted);margin-top:14px;text-align:center}
+
+footer.book-foot{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:14px}

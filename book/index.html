@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>배포, 처음부터 끝까지 — 교재</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../slides/css/deck.css">
+  <link rel="stylesheet" href="book.css">
+</head>
+<body class="book">
+
+<nav class="toc">
+  <a href="#top">표지</a>
+  <a href="#p0">0부</a>
+  <a href="#p1">1부</a>
+  <a href="#p2">2부</a>
+  <a href="#p3">3부</a>
+  <a href="#p4">4부</a>
+  <a href="#p5">5부</a>
+</nav>
+
+<header class="cover" id="top">
+  <div class="eyebrow">배포 입문 교재</div>
+  <h1>배포, 처음부터 끝까지</h1>
+  <p>로컬에서 개발하던 당신이, 서비스를 세상에 올리기까지 — 강사 없이 혼자 읽어도 이해되는 교재.</p>
+</header>
+
+<section id="p0">
+  <h2><span class="part-no">0부</span> 왜 배포가 막막한가</h2>
+  <p>처음 배포를 접할 때 느끼는 막막함은 개념의 부재가 아니라, 연결고리의 부재에서 비롯된다.</p>
+</section>
+
+<section id="p1">
+  <h2><span class="part-no">1부</span> 배포의 전체 그림</h2>
+  <p>배포란 코드가 로컬 머신을 떠나 인터넷을 통해 사용자에게 도달하기까지의 전체 경로를 이해하는 일이다.</p>
+
+  <div class="figure">
+    <div id="book-map"></div>
+    <div class="cap">요청 한 번의 여정 — 이 책이 정복할 지도</div>
+  </div>
+
+  <div class="figure">
+    <div id="book-journey"></div>
+    <div class="cap">직접 ▶ 를 눌러보세요. 보안그룹을 닫으면 차단됩니다.</div>
+  </div>
+</section>
+
+<section id="p2">
+  <h2><span class="part-no">2부</span> 백엔드 올리기 — 자동화 사다리</h2>
+  <p>수동 배포에서 GitOps 완전 자동화까지, 자동화 사다리를 한 칸씩 올라가며 각 단계의 책임 분담을 파악한다.</p>
+
+  <div class="figure">
+    <div id="book-ladder"></div>
+    <div class="cap">단계를 눌러 작업이 나→플랫폼으로 옮겨가는 걸 보세요.</div>
+  </div>
+
+  <div class="figure">
+    <div id="book-gitops"></div>
+    <div class="cap">GitOps reconcile 루프</div>
+  </div>
+</section>
+
+<section id="p3">
+  <h2><span class="part-no">3부</span> 도메인 + HTTPS</h2>
+  <p>도메인 등록부터 DNS 전파, TLS 인증서 발급까지, 주소창에 자물쇠가 뜨기까지의 과정을 순서대로 살펴본다.</p>
+</section>
+
+<section id="p4">
+  <h2><span class="part-no">4부</span> Flutter 앱 배포</h2>
+  <p>Flutter 앱을 iOS·Android·Web 각 플랫폼에 제출하는 빌드 파이프라인과 스토어 심사 흐름을 정리한다.</p>
+
+  <div class="figure">
+    <div id="book-flutter"></div>
+    <div class="cap">Flutter 빌드 → 배포 트랙</div>
+  </div>
+</section>
+
+<section id="p5">
+  <h2><span class="part-no">5부</span> 전체 잇기</h2>
+  <p>앞서 배운 모든 조각을 하나의 실전 프로젝트에 연결해, dev/prod 환경 분리와 배포 자동화를 완성한다.</p>
+
+  <div class="figure">
+    <div id="book-env"></div>
+    <div class="cap">dev/prod 환경 분리 — baseURL 스위치</div>
+  </div>
+</section>
+
+<footer class="book-foot">
+  배포, 처음부터 끝까지 · 교재판 · 발표 슬라이드는 /slides 참고
+</footer>
+
+<script src="../slides/js/map-data.js"></script>
+<script src="../slides/js/master-map.js"></script>
+<script src="../slides/js/sim-journey.js"></script>
+<script src="../slides/js/sim-ladder.js"></script>
+<script src="../slides/js/diagrams.js"></script>
+<script>
+  renderMap(document.getElementById('book-map'), 'app');
+  mountJourney(document.getElementById('book-journey'));
+  renderLadder(document.getElementById('book-ladder'));
+  renderGitopsLoop(document.getElementById('book-gitops'));
+  renderFlutterPipeline(document.getElementById('book-flutter'));
+  renderEnvSplit(document.getElementById('book-env'));
+</script>
+
+</body>
+</html>
