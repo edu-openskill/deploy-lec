@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>배포, 처음부터 끝까지</title>
+<link rel="stylesheet" href="css/deck.css">
+</head>
+<body>
+<div id="stage">
+  <div id="deck">
+
+    <section class="slide" data-part="0">
+      <div class="label">PART 0 · 배포 입문</div>
+      <h1>배포, 처음부터<br>끝까지</h1>
+      <p class="muted">로컬 → 서버 → 외부 접속, 그 사이의 모든 화살표</p>
+      <div class="accent-bar"></div>
+      <aside class="note" hidden>배포가 막막한 건 지식 부족이 아니라 로컬 환경에 대한 무의식적 의존 때문입니다.</aside>
+    </section>
+
+    <section class="slide" data-part="0">
+      <div class="label">PART 0</div>
+      <h2>"내 컴에선 되는데"의 정체</h2>
+      <p>로컬의 암묵적 전제 4가지 — 서버엔 없습니다.</p>
+      <ul>
+        <li>항상 켜진 내 PC</li>
+        <li>localhost 로 바로 접속</li>
+        <li>IDE가 알아서 빌드·실행</li>
+        <li>내 PC에만 깔린 JDK·DB</li>
+      </ul>
+      <aside class="note" hidden>배포란 이 4가지를 남의 컴퓨터(서버)에 다시 만들어주는 일.</aside>
+    </section>
+
+    <section class="slide" data-part="1">
+      <div class="label">PART 1</div>
+      <h2>샘플 — 엔진 동작 확인용</h2>
+      <p class="muted">← → 로 넘기고, S로 노트, 진행바·HUD 확인.</p>
+    </section>
+
+  </div>
+</div>
+
+<div id="progress"></div>
+<div id="hud"></div>
+<div id="notes"></div>
+<div class="navzone left"  id="navL"></div>
+<div class="navzone right" id="navR"></div>
+
+<script src="js/deck.js"></script>
+</body>
+</html>
