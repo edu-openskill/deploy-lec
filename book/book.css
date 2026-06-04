@@ -35,8 +35,8 @@ body.book{max-width:760px;margin:0 auto;padding:0 24px 160px;color:var(--ink);
 .callout .k{font-weight:800;color:var(--accent);font-size:14px;display:block;margin-bottom:4px}
 .callout.tip .k{color:#16a34a}.callout.warn .k{color:#c2680c}
 
-/* 그림(위젯)은 본문보다 넓게 — 가운데 정렬 풀블리드 */
-.figure{position:relative;left:50%;transform:translateX(-50%);width:min(94vw,1000px);
+/* 그림(위젯): 칼럼 폭에 맞춤 — 어떤 화면/PDF에서도 잘리지 않게. 내부 위젯은 알아서 줄바꿈된다 */
+.figure{width:100%;box-sizing:border-box;
   background:#fafafa;border:1px solid var(--line);border-radius:16px;padding:24px;margin:34px 0}
 .figure .cap{font-size:14px;color:var(--muted);margin-top:14px;text-align:center}
 
