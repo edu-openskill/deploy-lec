@@ -121,6 +121,57 @@
       <p class="muted">https는 선택이 아니라 기본. 앱 스토어도 평문 http를 막습니다.</p>
     </section>
 
+    <!-- 4부 (6 slides) -->
+    <section class="slide" data-part="4">
+      <div class="label">PART 4</div>
+      <h2>앱은 "올리는" 게 아니라<br>"심사받아 배포"</h2>
+      <p class="muted">서버 배포와는 멘탈모델이 다릅니다.</p>
+    </section>
+    <section class="slide" data-part="4">
+      <div class="label">PART 4</div>
+      <h2>빌드 산출물 — APK / AAB / IPA</h2>
+      <p>디버그 vs 릴리스. 안드로이드 AAB(스토어)/APK(직접설치), iOS IPA.</p>
+    </section>
+    <section class="slide" data-part="4">
+      <div class="label">PART 4</div>
+      <h2>코드 서명 — 왜 필요한가</h2>
+      <p>안드로이드 keystore, iOS 인증서·프로비저닝 프로파일. = 위변조 방지 도장.</p>
+    </section>
+    <section class="slide" data-part="4">
+      <div class="label">PART 4</div>
+      <h2>배포 트랙 3단</h2>
+      <p>내부테스트(Firebase App Distribution / Play 내부테스트 / TestFlight) → 비공개 → 프로덕션</p>
+    </section>
+    <section class="slide" data-part="4">
+      <div class="label">PART 4</div>
+      <h2>스토어 심사 + 흔한 반려</h2>
+      <p>특히 Apple. 권한 설명 누락, 개인정보 처리방침 미비 등.</p>
+    </section>
+    <section class="slide" data-part="4">
+      <div class="label">PART 4 · 🔌 연결</div>
+      <h2>백엔드와 만나는 지점</h2>
+      <p>앱의 <code>baseURL</code>을 dev/prod로 바꿔끼우기 → 2부에서 올린 서버 주소가 여기로.</p>
+      <p class="muted">두 세계가 연결되는 순간입니다.</p>
+    </section>
+
+    <!-- 5부 (3 slides) -->
+    <section class="slide" data-part="5">
+      <div class="label">PART 5</div>
+      <h2>환경 분리 — dev / staging / prod</h2>
+      <p>앱 baseURL ↔ 백엔드 환경. 비밀값 관리 한 스푼.</p>
+    </section>
+    <section class="slide" data-part="5">
+      <div class="label">PART 5</div>
+      <h2>비용 감각</h2>
+      <p>EC2 t2.micro 프리티어 / Railway 무료한도. <b>취미는 PaaS, 회사는 클라우드.</b></p>
+    </section>
+    <section class="slide" data-part="5">
+      <div class="label">PART 5</div>
+      <h2>전체 잇기 + 다음 한 걸음</h2>
+      <div id="map-final"></div>
+      <p style="margin-top:20px">숙제: 이번 주말 Railway에 너희 프로젝트 하나 올려보기.</p>
+    </section>
+
   </div>
 </div>
 
@@ -138,6 +189,7 @@
   if (mi) renderMap(mi, 'app'); // 1부 도입: 출발점 강조
   const dns = document.getElementById('map-dns');   if (dns) renderMap(dns, 'dns');
   const ngx = document.getElementById('map-nginx'); if (ngx) renderMap(ngx, 'nginx');
+  const fin = document.getElementById('map-final'); if (fin) renderMap(fin, null);
 </script>
 </body>
 </html>
