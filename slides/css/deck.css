@@ -69,3 +69,17 @@ html,body{margin:0;height:100%;background:#27272a;
   box-shadow:0 0 0 3px rgba(239,68,68,.25)}
 .sim-caption{margin-top:18px;background:#18181b;color:#e4e4e7;border-radius:8px;
   padding:14px 18px;font-size:18px;min-height:28px}
+
+/* 자동화 사다리 */
+.sim-ladder{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ladder-tabs{grid-column:1/3;display:flex;gap:8px;margin-bottom:8px}
+.ladder-tab{flex:1;font-size:18px;font-weight:700;padding:10px;border:0;border-radius:8px;
+  background:#f4f4f5;color:var(--ink);cursor:pointer}
+.ladder-tab.on{background:var(--accent);color:#fff}
+.ladder-col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;min-height:180px}
+.ladder-head{font-size:16px;font-weight:700;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 12px;border-radius:8px;font-size:16px}
+.chip.me{background:#fee2e2}
+.chip.pf{background:#dcfce7}
+.empty{color:#a1a1aa;font-size:15px}

@@ -6,6 +6,7 @@
 <ul id="out"></ul>
 <script src="js/map-data.js"></script>
 <script src="js/sim-journey.js"></script>
+<script src="js/sim-ladder.js"></script>
 <script>
   const out = document.getElementById('out');
   let fails = 0;
@@ -20,6 +21,16 @@
   check('MAP_NODES has 7 nodes', window.MAP_NODES.length === 7);
   check('first node is app', window.MAP_NODES[0].id === 'app');
   check('sg node exists', window.MAP_NODES.some(n => n.id === 'sg'));
+
+  // sim-ladder 순수 로직
+  if (window.ladderState) {
+    check('aws: all 8 tasks are mine', ladderState('aws').me.length === 8 && ladderState('aws').platform.length === 0);
+    check('gitops: all 8 to platform', ladderState('gitops').platform.length === 8 && ladderState('gitops').me.length === 0);
+    check('railway: SSH moved to platform', ladderState('railway').platform.includes('SSH 접속'));
+    check('eks: scaling moved to platform', ladderState('eks').platform.includes('스케일링'));
+  } else {
+    check('ladderState loaded', false);
+  }
 
   // sim-journey 순수 로직
   if (window.JourneyModel) {

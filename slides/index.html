@@ -191,6 +191,7 @@
 <script src="js/map-data.js"></script>
 <script src="js/master-map.js"></script>
 <script src="js/sim-journey.js"></script>
+<script src="js/sim-ladder.js"></script>
 <script src="js/deck.js"></script>
 <script>
   const mi = document.getElementById('map-intro');
@@ -199,6 +200,7 @@
   const ngx = document.getElementById('map-nginx'); if (ngx) renderMap(ngx, 'nginx');
   const fin = document.getElementById('map-final'); if (fin) renderMap(fin, null);
   const sj = document.getElementById('sim-journey-mount'); if (sj) mountJourney(sj);
+  const sl = document.getElementById('sim-ladder-mount'); if (sl) renderLadder(sl);
 </script>
 </body>
 </html>
