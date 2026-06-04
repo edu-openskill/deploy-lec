@@ -45,3 +45,14 @@ html,body{margin:0;height:100%;background:#27272a;
   background:#111;color:#e4e4e7;padding:20px 28px;font-size:16px;line-height:1.6;
   display:none;z-index:20;border-top:2px solid var(--accent)}
 #notes.show{display:block}
+
+/* 마스터 지도 */
+.mapchain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.mapnode{flex:1;min-width:96px;text-align:center;padding:14px 8px;border-radius:12px;
+  background:#f4f4f5;border:2px solid var(--line);transition:all .2s}
+.mapnode.cur{background:var(--accent-soft);border-color:var(--accent);
+  box-shadow:0 6px 18px rgba(79,70,229,.18);transform:translateY(-2px)}
+.mapicon{font-size:26px}
+.maplabel{font-size:14px;font-weight:700;margin-top:4px}
+.mapnode.cur .maplabel{color:var(--accent)}
+.maparrow{color:#a1a1aa;font-weight:700}

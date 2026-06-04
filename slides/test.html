@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>simulator logic tests</title>
+<style>body{font-family:system-ui;padding:24px}.pass{color:#16a34a}.fail{color:#dc2626;font-weight:700}</style>
+</head><body>
+<h1>시뮬레이터 순수 로직 테스트</h1>
+<ul id="out"></ul>
+<script src="js/map-data.js"></script>
+<!-- sim 스크립트는 이후 Task에서 추가된다 -->
+<script>
+  const out = document.getElementById('out');
+  let fails = 0;
+  function check(name, cond){
+    const li = document.createElement('li');
+    li.textContent = (cond ? 'PASS — ' : 'FAIL — ') + name;
+    li.className = cond ? 'pass' : 'fail';
+    if(!cond) fails++;
+    out.appendChild(li);
+  }
+  // map-data
+  check('MAP_NODES has 7 nodes', window.MAP_NODES.length === 7);
+  check('first node is app', window.MAP_NODES[0].id === 'app');
+  check('sg node exists', window.MAP_NODES.some(n => n.id === 'sg'));
+
+  window.__report = () => {
+    const h = document.createElement('h2');
+    h.textContent = fails === 0 ? '✅ ALL PASS' : `❌ ${fails} FAIL`;
+    h.className = fails === 0 ? 'pass' : 'fail';
+    document.body.appendChild(h);
+  };
+  window.__report();
+</script>
+</body></html>
