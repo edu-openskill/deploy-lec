@@ -99,6 +99,7 @@
       <div class="label">PART 2 · 2-4</div>
       <h2>GitOps &amp; ArgoCD — 종착</h2>
       <p>Git에 원하는 상태를 적으면 ArgoCD가 클러스터를 거기 맞춰 동기화.</p>
+      <div id="diagram-gitops"></div>
       <p class="muted">Railway 기억나죠? 그게 아기 GitOps였어요.</p>
     </section>
     <section class="slide" data-part="2">
@@ -148,6 +149,7 @@
       <div class="label">PART 4</div>
       <h2>배포 트랙 3단</h2>
       <p>내부테스트(Firebase App Distribution / Play 내부테스트 / TestFlight) → 비공개 → 프로덕션</p>
+      <div id="diagram-flutter"></div>
     </section>
     <section class="slide" data-part="4">
       <div class="label">PART 4</div>
@@ -166,6 +168,7 @@
       <div class="label">PART 5</div>
       <h2>환경 분리 — dev / staging / prod</h2>
       <p>앱 baseURL ↔ 백엔드 환경. 비밀값 관리 한 스푼.</p>
+      <div id="diagram-env"></div>
     </section>
     <section class="slide" data-part="5">
       <div class="label">PART 5</div>
@@ -194,6 +197,7 @@
 <script src="js/master-map.js"></script>
 <script src="js/sim-journey.js"></script>
 <script src="js/sim-ladder.js"></script>
+<script src="js/diagrams.js"></script>
 <script src="js/deck.js"></script>
 <script>
   const mi = document.getElementById('map-intro');
@@ -203,6 +207,9 @@
   const fin = document.getElementById('map-final'); if (fin) renderMap(fin, null);
   const sj = document.getElementById('sim-journey-mount'); if (sj) mountJourney(sj);
   const sl = document.getElementById('sim-ladder-mount'); if (sl) renderLadder(sl);
+  const dgg=document.getElementById('diagram-gitops'); if(dgg) renderGitopsLoop(dgg);
+  const dgf=document.getElementById('diagram-flutter'); if(dgf) renderFlutterPipeline(dgf);
+  const dge=document.getElementById('diagram-env'); if(dge) renderEnvSplit(dge);
 </script>
 </body>
 </html>

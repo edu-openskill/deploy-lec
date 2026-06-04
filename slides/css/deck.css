@@ -91,3 +91,20 @@ html,body{margin:0;height:100%;background:#27272a;
 /* 코드 인라인 */
 .slide code{font-family:ui-monospace,monospace;background:#eef2ff;
   color:#3730a3;padding:1px 7px;border-radius:5px;font-size:.92em}
+
+/* 다이어그램 */
+.diagram{margin-top:20px}
+.drow{display:flex;align-items:stretch;gap:10px}
+.drow.dwrap{flex-wrap:wrap;row-gap:10px}
+.dbox{flex:1;min-width:120px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.dbox-t{font-size:18px;font-weight:700}
+.dbox-s{font-size:13px;color:var(--muted);margin-top:4px}
+.darrow{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:18px}
+.darrow-l{font-size:11px;color:var(--muted);font-weight:400;white-space:nowrap;margin-top:2px}
+.dbox-git,.dbox-k8s,.dbox-app{border-color:#a5b4fc}
+.dbox-argo{border-color:var(--accent);background:var(--accent-soft)}
+.dloop-label{margin-top:14px;text-align:center;color:var(--accent);font-weight:700;font-size:16px}
+.dg-env .denv-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.dbox-dev{border-color:#fdba74;background:#fff7ed}
+.dbox-prod{border-color:#22c55e;background:#f0fdf4}
+.denv-note{margin-top:6px;text-align:center;color:var(--muted);font-size:15px}
