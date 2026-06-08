@@ -1,6 +1,17 @@
-/* 책: deck.css 위젯 스타일을 재사용하되 전역(어두운 배경/슬라이드 고정)을 읽기용으로 덮어쓴다.
-   deck.css 다음에 로드되어야 한다. */
-html,body{height:auto;background:#fff;overflow-x:hidden}
+/* 책: 단독(self-contained) 스타일시트. 외부 의존 없음. */
+:root{
+  --ink:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --accent:#4f46e5;
+  --accent-soft:#eef2ff;
+  --warn:#f59e0b;
+  --ok:#16a34a;
+  --ok-soft:#f0fdf4;
+  --bad:#dc2626;
+  --bad-soft:#fef2f2;
+}
+html,body{height:auto;background:#fff;overflow-x:hidden;margin:0;padding:0}
 body.book{max-width:760px;margin:0 auto;padding:0 24px 160px;color:var(--ink);
   font-size:18px;line-height:1.78;font-family:Pretendard,system-ui,sans-serif}
 
@@ -56,3 +67,118 @@ footer.book-foot{margin-top:80px;padding-top:24px;border-top:1px solid var(--lin
   padding:16px 20px;margin:20px 0;font-size:16px;line-height:1.7}
 .book .deep-x{color:#b91c1c;font-weight:700}
 .book .deep-o{color:#15803d;font-weight:700}
+
+/* ═══════════ 정적 다이어그램 ═══════════ */
+
+/* 가로 흐름 지도 (1부 마스터 지도 등) */
+.flowmap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;row-gap:14px}
+.flowmap .fm-node{display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 13px;min-width:74px;text-align:center}
+.flowmap .fm-node .ic{font-size:20px;line-height:1}
+.flowmap .fm-node .nm{font-weight:800;font-size:13px;color:var(--ink);white-space:nowrap}
+.flowmap .fm-node .sub{font-size:11px;color:var(--muted);white-space:nowrap}
+.flowmap .fm-node.hl{border-color:var(--accent);background:var(--accent-soft)}
+.flowmap .fm-arrow{display:flex;flex-direction:column;align-items:center;color:var(--muted);min-width:30px}
+.flowmap .fm-arrow .ar{color:var(--accent);font-weight:800;font-size:16px;line-height:1}
+.flowmap .fm-arrow .lb{font-size:10px;white-space:nowrap;margin-top:2px}
+
+/* 세로 여정 (1부 요청의 여정) */
+.journey{display:flex;flex-direction:column;gap:0;max-width:560px;margin:0 auto}
+.journey .jr-step{display:flex;gap:14px;align-items:flex-start}
+.journey .jr-rail{display:flex;flex-direction:column;align-items:center;flex:0 0 34px}
+.journey .jr-dot{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border:1.5px solid var(--accent)}
+.journey .jr-line{width:2px;flex:1;min-height:18px;background:var(--line)}
+.journey .jr-body{padding:4px 0 20px}
+.journey .jr-step:last-child .jr-body{padding-bottom:4px}
+.journey .jr-t{font-weight:800;font-size:14.5px;color:var(--ink)}
+.journey .jr-d{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.55}
+.journey .jr-step.block .jr-dot{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.journey .jr-block-note{display:inline-block;margin-top:6px;background:var(--bad-soft);color:#b91c1c;
+  border:1px solid #fecaca;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700}
+
+/* 자동화 사다리 (2부) */
+.ladder{display:flex;flex-direction:column;gap:14px}
+.ladder .ld-row{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center}
+.ladder .ld-name{font-weight:800;font-size:13.5px;color:var(--ink);text-align:right}
+.ladder .ld-name .lv{display:block;font-size:10.5px;color:var(--accent);font-weight:800;letter-spacing:.08em}
+.ladder .ld-chips{display:flex;flex-wrap:wrap;gap:5px}
+.ladder .chip{font-size:11.5px;font-weight:700;border-radius:7px;padding:3px 9px;white-space:nowrap}
+.ladder .chip.me{background:#fff7ed;color:#c2680c;border:1px solid #fed7aa}
+.ladder .chip.pf{background:var(--ok-soft);color:#15803d;border:1px solid #bbf7d0}
+.ladder .ld-legend{display:flex;gap:14px;justify-content:center;font-size:12px;color:var(--muted);margin-top:4px}
+.ladder .ld-legend .chip{font-size:11px}
+
+/* k8s 구조도 (2부) */
+.k8smap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.k8smap .k8s-box{border:1.5px dashed var(--accent);border-radius:14px;padding:14px 18px;background:#fff;
+  display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:480px}
+.k8smap .k8s-label{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.k8smap .k8s-pods{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.k8smap .k8s-pod{background:var(--ok-soft);border:1.5px solid #bbf7d0;color:#15803d;font-weight:800;
+  font-size:12px;border-radius:10px;padding:10px 14px;text-align:center}
+.k8smap .k8s-pod.dead{background:var(--bad-soft);border-color:#fecaca;color:#b91c1c;text-decoration:line-through}
+.k8smap .k8s-svc{background:var(--accent-soft);border:1.5px solid var(--accent);color:var(--accent);
+  font-weight:800;font-size:12.5px;border-radius:10px;padding:8px 16px}
+.k8smap .k8s-note{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+.k8smap .k8s-vline{color:var(--muted);font-size:14px;line-height:1}
+
+/* 환경 분리 (5부) */
+.envsplit{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.envsplit .env-col{flex:1;min-width:150px;max-width:210px;border:1.5px solid var(--line);border-radius:14px;
+  background:#fff;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.envsplit .env-col.prod{border-color:var(--accent)}
+.envsplit .env-h{font-weight:800;font-size:14px;color:var(--ink)}
+.envsplit .env-h small{display:block;font-weight:700;font-size:11px;color:var(--muted);margin-top:1px}
+.envsplit .env-item{width:100%;text-align:center;font-size:12px;font-weight:700;border-radius:8px;padding:6px 8px;
+  background:#f8fafc;border:1px solid var(--line);color:var(--ink)}
+.envsplit .env-url{font-family:ui-monospace,monospace;font-size:11px;background:var(--accent-soft);
+  border:1px solid #c7d2fe;color:#3730a3;border-radius:8px;padding:6px 8px;width:100%;text-align:center;word-break:break-all}
+
+/* ═══════════ 시뮬레이터 공통 ═══════════ */
+.sim{font-size:14px;position:relative}
+.sim,.sim *{box-sizing:border-box}
+.sim-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.sim-title{font-weight:800;font-size:15px;color:var(--ink)}
+.sim-controls{display:flex;gap:8px;flex-wrap:wrap}
+.sim-btn{appearance:none;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:13px;
+  border-radius:9px;padding:8px 16px;background:var(--accent);color:#fff;transition:transform .12s,opacity .12s}
+.sim-btn:hover:not(:disabled){transform:translateY(-1px)}
+.sim-btn:disabled{opacity:.35;cursor:default}
+.sim-btn.ghost{background:#fff;color:var(--muted);border:1.5px solid var(--line)}
+.sim-btn.danger{background:#fff;color:var(--bad);border:1.5px solid #fecaca}
+.sim-btn.warn{background:#fff;color:#c2680c;border:1.5px solid #fed7aa}
+.sim-steps{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+.sim-step{flex:1;min-width:54px;text-align:center;font-size:10.5px;font-weight:800;color:var(--muted);
+  padding:5px 2px;border-radius:7px;background:#f1f5f9;border:1px solid transparent;white-space:nowrap}
+.sim-step.on{background:var(--accent-soft);color:var(--accent);border-color:#c7d2fe}
+.sim-step.done{background:var(--ok-soft);color:#15803d}
+.sim-status{margin-top:12px;min-height:42px;font-size:13px;line-height:1.6;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 9px 9px 0;padding:9px 13px}
+.sim-status b{color:var(--accent)}
+.sim-status.ok{border-left-color:var(--ok)}
+.sim-status.bad{border-left-color:var(--bad)}
+.sim-term{margin-top:12px;background:#0d1117;border-radius:10px;padding:11px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;line-height:1.7;color:#e6edf3;max-height:150px;overflow-y:auto;white-space:pre-wrap;word-break:break-all}
+.sim-term .tl-p{color:#7ee787}
+.sim-term .tl-c{color:#7d8590}
+.sim-term .tl-e{color:#ff7b72}
+.sim-term .tl-o{color:#a5d6ff}
+.sim-stage{position:relative}
+.sim-dot{position:absolute;z-index:9;width:14px;height:14px;border-radius:50%;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;font-size:9px;
+  box-shadow:0 0 0 4px rgba(79,70,229,.15);transition:left .9s cubic-bezier(.45,.05,.55,.95),top .9s cubic-bezier(.45,.05,.55,.95)}
+.sim-dot.req{background:var(--accent)}
+.sim-dot.file{background:#c2680c;border-radius:4px;box-shadow:0 0 0 4px rgba(194,104,12,.15)}
+.sim-dot.ok{background:var(--ok);box-shadow:0 0 0 4px rgba(22,163,74,.18)}
+.sim-dot.bad{background:var(--bad);box-shadow:0 0 0 4px rgba(220,38,38,.18)}
+.sim-dot .tag{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;
+  white-space:nowrap;color:var(--ink);background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+@keyframes sim-pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.35)}50%{box-shadow:0 0 0 7px rgba(22,163,74,0)}}
+@keyframes sim-spin{to{transform:rotate(360deg)}}
+@keyframes sim-pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes sim-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.sim .pop{animation:sim-pop .35s ease both}
+.sim .shake{animation:sim-shake .3s ease 2}
+.sim .spin{display:inline-block;width:11px;height:11px;border:2px solid #c7d2fe;border-top-color:var(--accent);
+  border-radius:50%;animation:sim-spin .7s linear infinite;vertical-align:-1px}
